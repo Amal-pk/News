@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:news/core/core.dart';
 import 'package:news/error/error.dart';
 import 'package:news/model/model.dart';
 
@@ -13,7 +14,9 @@ class NewsService {
   Future<NewsRespo?> news() async {
     try {
       Response response = await Dio().get(
-          "https://newsapi.org/v2/everything?q=tesla&from=2022-11-22&sortBy=publishedAt&apiKey=4af47f865fff479a96d3984118899fd2");
+          "https://newsapi.org/v2/everything?q=apple&from=2022-12-27&to=2022-12-27&sortBy=popularity&apiKey=" +
+              apiKey);
+      // "https://newsapi.org/v2/everything?q=tesla&from=2022-11-22&sortBy=publishedAt&apiKey=4af47f865fff479a96d3984118899fd2");
       if (response.statusCode == 200) {
         // print(response.data);
         const SnackBar(

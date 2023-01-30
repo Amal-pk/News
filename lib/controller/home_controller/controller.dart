@@ -13,8 +13,9 @@ class HomeController extends ChangeNotifier {
     NewsRespo? newsrespo = await NewsService.instance.news();
     // log(newsrespo!.status.toString());
     if (newsrespo != null) {
+      List<Article> temp = newsrespo.articles!.toSet().toList();
       news.clear();
-      news.addAll(newsrespo.articles!);
+      news.addAll(temp);
     }
     isloading = false;
     notifyListeners();
